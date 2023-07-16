@@ -1,7 +1,6 @@
 const express = require('express');
 require('dotenv').config()
 const fs = require('fs');
-// const CreateFile = require('./fileSystem/file');
 
 // create an express app
 const app = express();
@@ -12,10 +11,11 @@ app.get('/', (request, response) => {
 });
 
 app.get('/createFile', (request, response) => {
-    const data = request.body.data
     const date = new Date()
-    console.log(date)
-    fs.writeFile(`/ZEN WORKPLACE/Node Projects/file-system-task/fileSystem/${date}.txt`, data, (err)=> {
+
+    let fileName = `Date-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} Time-${date.getHours()}H ${date.getMinutes()}min ${date.getSeconds()}sec`
+
+    fs.writeFile(`/ZEN WORKPLACE/Node Projects/file-system-task/fileSystem/${fileName}.txt`, date.toString(), (err) => {
         if (err) {
             console.log(err);
             return;
