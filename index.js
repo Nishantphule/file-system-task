@@ -6,10 +6,12 @@ const fs = require('fs');
 const app = express();
 app.use(express.json());
 
+// homepage
 app.get('/', (request, response) => {
     response.send('<h1>Hello World!</h1>');
 });
 
+// api to create file
 app.get('/createFile', (request, response) => {
     const date = new Date()
 
