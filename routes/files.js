@@ -2,12 +2,13 @@ const filesRouter = require('express').Router();
 const fs = require('fs');
 
 // create a file
+// Go to /files/createFile to create new file
 filesRouter.get('/createFile', (request, response) => {
     const date = new Date()
 
-    let fileName = `Date-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} Time-${date.getHours()}H ${date.getMinutes()}min ${date.getSeconds()}sec`
+    let fileName = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}H;${date.getMinutes()}m;${date.getSeconds()}s`
 
-    fs.writeFile(`/ZEN WORKPLACE/Node Projects/file-system-task/fileSystem/${fileName}.txt`, date.toString(), (err) => {
+    fs.writeFile(`Time_Stamp/${fileName}.txt`, date.toString(), (err) => {
         if (err) {
             console.log(err);
             return;
@@ -17,9 +18,10 @@ filesRouter.get('/createFile', (request, response) => {
 });
 
 // retrieve all files
+// Go to /files to get all files in timeStamp
 filesRouter.get('/', (request, response) => {
 
-    fs.readdir(`/ZEN WORKPLACE/Node Projects/file-system-task/fileSystem`, 'utf-8', (err, files) => {
+    fs.readdir(`Time_Stamp`, 'utf-8', (err, files) => {
         if (err) {
             console.log(err);
             return;
