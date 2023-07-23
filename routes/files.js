@@ -6,7 +6,7 @@ const fs = require('fs');
 filesRouter.get('/createFile', (request, response) => {
     const date = new Date()
 
-    let fileName = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}H;${date.getMinutes()}m;${date.getSeconds()}s`
+    let fileName = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()+5}H;${date.getMinutes()+30}m;${date.getSeconds()}s`
 
     fs.writeFile(`Time_Stamp/${fileName}.txt`, date.toString(), (err) => {
         if (err) {
